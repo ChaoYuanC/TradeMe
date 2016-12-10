@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (4.2.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SideMenu (2.0.6)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.2.0)
+  - SDWebImage (~> 3.8)
+  - SideMenu (~> 2.0)
+
+SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SideMenu: 90be7a14e9f54eb528f96f2033aa54f2992c5667
+
+PODFILE CHECKSUM: 77ceb27d777656673fe0b27e516f93f7c07761d3
+
+COCOAPODS: 1.1.1

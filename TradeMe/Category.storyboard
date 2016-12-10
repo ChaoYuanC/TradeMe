@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qlb-o9-Llk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Category View Controller-->
+        <scene sceneID="mwy-Bm-8j4">
+            <objects>
+                <viewController storyboardIdentifier="TMCategoryViewController" id="Qlb-o9-Llk" customClass="TMCategoryViewController" customModule="TradeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fb7-ZB-LdA"/>
+                        <viewControllerLayoutGuide type="bottom" id="E1n-eQ-FZj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pw8-Vt-eN5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Lo-xZ-0ib">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Qlb-o9-Llk" id="aOk-Cc-dVe"/>
+                                    <outlet property="delegate" destination="Qlb-o9-Llk" id="z2V-yc-k1V"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IpV-M9-Mko">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5fb-v3-ksk">
+                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                        <color key="color" red="0.57647058819999997" green="0.70588235290000001" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="5fb-v3-ksk" firstAttribute="centerX" secondItem="IpV-M9-Mko" secondAttribute="centerX" id="Wo0-py-7SN"/>
+                                    <constraint firstItem="5fb-v3-ksk" firstAttribute="centerY" secondItem="IpV-M9-Mko" secondAttribute="centerY" id="klB-7N-3vJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="IpV-M9-Mko" secondAttribute="bottom" id="3OO-g2-u8P"/>
+                            <constraint firstItem="IpV-M9-Mko" firstAttribute="leading" secondItem="pw8-Vt-eN5" secondAttribute="leading" id="3se-RE-Qg4"/>
+                            <constraint firstItem="IpV-M9-Mko" firstAttribute="top" secondItem="pw8-Vt-eN5" secondAttribute="top" id="9Jb-KR-NMG"/>
+                            <constraint firstAttribute="bottom" secondItem="5Lo-xZ-0ib" secondAttribute="bottom" id="ERx-md-zfT"/>
+                            <constraint firstAttribute="trailing" secondItem="IpV-M9-Mko" secondAttribute="trailing" id="jem-Lv-pYM"/>
+                            <constraint firstItem="5Lo-xZ-0ib" firstAttribute="leading" secondItem="pw8-Vt-eN5" secondAttribute="leading" id="ncX-Kp-vs5"/>
+                            <constraint firstAttribute="trailing" secondItem="5Lo-xZ-0ib" secondAttribute="trailing" id="rfG-S4-qQY"/>
+                            <constraint firstItem="5Lo-xZ-0ib" firstAttribute="top" secondItem="pw8-Vt-eN5" secondAttribute="top" id="sIz-k8-ePr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XRg-FK-ab1">
+                        <connections>
+                            <outlet property="titleView" destination="vBn-6A-gqc" id="J2D-1B-D7d"/>
+                        </connections>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="5fb-v3-ksk" id="hRO-ez-2UU"/>
+                        <outlet property="loadingView" destination="IpV-M9-Mko" id="QM3-uF-Jon"/>
+                        <outlet property="searchBar" destination="vBn-6A-gqc" id="RCI-A9-aXN"/>
+                        <outlet property="tableView" destination="5Lo-xZ-0ib" id="UTp-Ww-Wx1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2A-XB-7H9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="vBn-6A-gqc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="Qlb-o9-Llk" id="dN7-vX-ZnR"/>
+                    </connections>
+                </searchBar>
+            </objects>
+            <point key="canvasLocation" x="1192.8" y="11.244377811094454"/>
+        </scene>
+    </scenes>
+</document>

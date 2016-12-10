@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vTm-Zr-Waf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Listing View Controller-->
+        <scene sceneID="QbW-Qi-qxj">
+            <objects>
+                <viewController storyboardIdentifier="TMListingViewController" id="vTm-Zr-Waf" customClass="TMListingViewController" customModule="TradeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ONe-KZ-cVj"/>
+                        <viewControllerLayoutGuide type="bottom" id="7k5-c5-RGx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j30-9o-Hbf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Osa-f6-VRC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vTm-Zr-Waf" id="ynV-Gr-eqE"/>
+                                    <outlet property="delegate" destination="vTm-Zr-Waf" id="OW1-Sj-F5k"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lk-Xz-XgP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VDD-c1-tcN">
+                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                        <color key="color" red="0.57647058819999997" green="0.70588235290000001" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="VDD-c1-tcN" firstAttribute="centerY" secondItem="4Lk-Xz-XgP" secondAttribute="centerY" id="QuZ-Gl-QS7"/>
+                                    <constraint firstItem="VDD-c1-tcN" firstAttribute="centerX" secondItem="4Lk-Xz-XgP" secondAttribute="centerX" id="aFK-HV-4kn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Osa-f6-VRC" firstAttribute="top" secondItem="j30-9o-Hbf" secondAttribute="top" id="QTO-do-3GC"/>
+                            <constraint firstItem="7k5-c5-RGx" firstAttribute="top" secondItem="Osa-f6-VRC" secondAttribute="bottom" id="aZF-52-91i"/>
+                            <constraint firstItem="4Lk-Xz-XgP" firstAttribute="top" secondItem="j30-9o-Hbf" secondAttribute="top" id="ghP-Ph-CFQ"/>
+                            <constraint firstItem="Osa-f6-VRC" firstAttribute="leading" secondItem="j30-9o-Hbf" secondAttribute="leading" id="iop-aL-hAL"/>
+                            <constraint firstAttribute="trailing" secondItem="4Lk-Xz-XgP" secondAttribute="trailing" id="kPv-0U-jhX"/>
+                            <constraint firstAttribute="trailing" secondItem="Osa-f6-VRC" secondAttribute="trailing" id="m2i-ld-F0s"/>
+                            <constraint firstItem="7k5-c5-RGx" firstAttribute="top" secondItem="4Lk-Xz-XgP" secondAttribute="bottom" id="qU7-Ne-ZgR"/>
+                            <constraint firstItem="4Lk-Xz-XgP" firstAttribute="leading" secondItem="j30-9o-Hbf" secondAttribute="leading" id="uFX-nL-DoQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="VDD-c1-tcN" id="nja-gY-o0t"/>
+                        <outlet property="loadingView" destination="4Lk-Xz-XgP" id="o7q-q6-iNC"/>
+                        <outlet property="tableView" destination="Osa-f6-VRC" id="pHk-5Y-Gfs"/>
+                        <segue destination="s0p-hA-L6A" kind="show" identifier="TMListingDetailViewController" id="hzv-Jt-2xN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0jg-7r-tRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-350" y="-286"/>
+        </scene>
+        <!--Listing Detail View Controller-->
+        <scene sceneID="f4e-tz-5F0">
+            <objects>
+                <viewController storyboardIdentifier="TMListingDetailViewController" id="s0p-hA-L6A" customClass="TMListingDetailViewController" customModule="TradeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hun-Rw-eRc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fzx-EC-urL"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gwx-Qa-mL0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8iW-iJ-dc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="-287"/>
+        </scene>
+    </scenes>
+</document>
