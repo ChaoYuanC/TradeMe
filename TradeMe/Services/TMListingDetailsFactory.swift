@@ -11,7 +11,7 @@ import UIKit
 class TMListingDetailsFactory {
     fileprivate enum DetailType: String {
         case Car = "0001"
-        case Property = "0002"
+        case Property = "0350"
     }
     
 
@@ -28,10 +28,8 @@ class TMListingDetailsFactory {
         case .Car:
             return self.carDetails(detailDictionary)
         case .Property:
-            break
+            return self.propertyDetails(detailDictionary)
         }
-        
-        return nil
     }
     
     // MARK: - Private
@@ -54,11 +52,18 @@ class TMListingDetailsFactory {
     }
     
     // MARK: - Car
-    fileprivate func carDetails(_ detailDictionary: NSDictionary) ->  [TMListingDetailSection] {
+    fileprivate func carDetails(_ detailDictionary: NSDictionary) -> [TMListingDetailSection] {
 
         let detailSectoin = TMListingDetailSection(sectionTitle: "Detail", cells: self.itmeAttributes(detailDictionary))
         
         return [detailSectoin]
+    }
+    
+    fileprivate func propertyDetails(_ detailDictionary: NSDictionary) -> [TMListingDetailSection] {
+        let detailSectoin = TMListingDetailSection(sectionTitle: "Detail", cells: self.itmeAttributes(detailDictionary))
+        let agencySection = TMListingDetailSection(sectionTitle: "Agency", cells: self.itemAgency(detailDictionary))
+        
+        return [detailSectoin, agencySection]
     }
     
     
@@ -104,4 +109,19 @@ class TMListingDetailsFactory {
         return attributeCells
     }
     
+    fileprivate func itemAgency(_ detailDictionary: NSDictionary) -> [DetailCell] {
+        let agencyInfo = detailDictionary.dictionaryForKey("Agency")
+
+        var attributeCells = [DetailCell]()
+
+        let agencyName = agencyInfo.stringForKey("Name")
+        let agencyNameCell = DetailCell.DescriptionCell(TMAttributeObject(title: "Name", value: agencyName))
+        attributeCells.append(agencyNameCell)
+        
+        let website = agencyInfo.stringForKey("Website")
+        let websiteCell = DetailCell.DescriptionCell(TMAttributeObject(title: "Website", value: website))
+        attributeCells.append(websiteCell)
+
+        return attributeCells
+    }
 }
