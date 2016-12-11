@@ -47,6 +47,8 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
             self.loadingView.isHidden = true
             self.activityIndicatorView.stopAnimating()
             if success {
+                self.title = headerData?.title
+                
                 if let headerData = headerData {
                     self.tableView.tableHeaderView = self.headerViewWithObject(headerData)
                 }
