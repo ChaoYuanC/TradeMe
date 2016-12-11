@@ -14,6 +14,9 @@
 		2410B8921DF8C49C00784C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2410B8901DF8C49C00784C60 /* LaunchScreen.storyboard */; };
 		2410B89D1DF8C49C00784C60 /* TradeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410B89C1DF8C49C00784C60 /* TradeMeTests.swift */; };
 		2410B8A81DF8C49C00784C60 /* TradeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410B8A71DF8C49C00784C60 /* TradeMeUITests.swift */; };
+		2423022A1DFCBA230003E606 /* TMListingDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */; };
+		2423022C1DFCC9010003E606 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423022B1DFCC9010003E606 /* NSDateExtension.swift */; };
+		242302301DFCCDB10003E606 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2423022F1DFCCDB10003E606 /* NSDate+Utilities.m */; };
 		242EEF301DF9599D001AF115 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 242EEF2E1DF9599D001AF115 /* Main_iPad.storyboard */; };
 		242EEF331DF95D2D001AF115 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 242EEF321DF95D2D001AF115 /* Category.storyboard */; };
 		242EEF381DF95F8A001AF115 /* TMListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EEF371DF95F8A001AF115 /* TMListingViewController.swift */; };
@@ -74,6 +77,11 @@
 		2410B8A31DF8C49C00784C60 /* TradeMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2410B8A71DF8C49C00784C60 /* TradeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeMeUITests.swift; sourceTree = "<group>"; };
 		2410B8A91DF8C49C00784C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingDetailsFactory.swift; sourceTree = "<group>"; };
+		2423022B1DFCC9010003E606 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		2423022D1DFCCDB00003E606 /* TradeMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TradeMe-Bridging-Header.h"; sourceTree = "<group>"; };
+		2423022E1DFCCDB10003E606 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		2423022F1DFCCDB10003E606 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		242EEF2F1DF9599D001AF115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		242EEF321DF95D2D001AF115 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Category.storyboard; path = ../../Category.storyboard; sourceTree = "<group>"; };
 		242EEF371DF95F8A001AF115 /* TMListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +224,7 @@
 				2483B71A1DF96FF500DC5471 /* TMCategoryService.swift */,
 				2483B7361DF9C33500DC5471 /* TMListingService.swift */,
 				2483B74A1DF9FA9400DC5471 /* TMListingDetailService.swift */,
+				242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -296,8 +305,12 @@
 		2497BA2C1DF9446C00D8523C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2423022E1DFCCDB10003E606 /* NSDate+Utilities.h */,
+				2423022F1DFCCDB10003E606 /* NSDate+Utilities.m */,
 				2483B7261DF9831B00DC5471 /* NSDictionaryExtension.swift */,
 				2483B7301DF9B51700DC5471 /* UITableViewExtension.swift */,
+				2423022B1DFCC9010003E606 /* NSDateExtension.swift */,
+				2423022D1DFCCDB00003E606 /* TradeMe-Bridging-Header.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +395,7 @@
 				TargetAttributes = {
 					2410B8831DF8C49C00784C60 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					2410B8971DF8C49C00784C60 = {
@@ -507,6 +521,7 @@
 				2483B7421DF9EE9F00DC5471 /* TMListingDetailPosterTableViewCell.swift in Sources */,
 				2483B7251DF97B0100DC5471 /* TMCategoryViewController.swift in Sources */,
 				2483B71B1DF96FF500DC5471 /* TMCategoryService.swift in Sources */,
+				2423022C1DFCC9010003E606 /* NSDateExtension.swift in Sources */,
 				2483B7311DF9B51700DC5471 /* UITableViewExtension.swift in Sources */,
 				2483B73B1DF9D6A300DC5471 /* TMListingObject.swift in Sources */,
 				247BA54A1DF92DD10058624C /* SearchViewController.swift in Sources */,
@@ -514,12 +529,14 @@
 				2483B72C1DF9923700DC5471 /* TMCategoryTableViewCell.swift in Sources */,
 				2483B71F1DF9712C00DC5471 /* TMCategoryObject.swift in Sources */,
 				2483B73D1DF9DE9800DC5471 /* TMListingTableViewCell.swift in Sources */,
+				2423022A1DFCBA230003E606 /* TMListingDetailsFactory.swift in Sources */,
 				2483B7271DF9831B00DC5471 /* NSDictionaryExtension.swift in Sources */,
 				242EEF3A1DF9610A001AF115 /* TMMainViewController.swift in Sources */,
 				2410B8881DF8C49C00784C60 /* AppDelegate.swift in Sources */,
 				2483B7491DF9F6C500DC5471 /* TMListingDetailObject.swift in Sources */,
 				2483B7231DF973CB00DC5471 /* APINetwork.swift in Sources */,
 				415073BA1DFA1FF60079DF45 /* TMiPadMainViewController.swift in Sources */,
+				242302301DFCCDB10003E606 /* NSDate+Utilities.m in Sources */,
 				2483B74B1DF9FA9400DC5471 /* TMListingDetailService.swift in Sources */,
 				2483B7371DF9C33500DC5471 /* TMListingService.swift in Sources */,
 				2483B72F1DF9B25700DC5471 /* TMBaseTableViewCell.swift in Sources */,
@@ -686,10 +703,13 @@
 			baseConfigurationReference = 1B89AF2469E282CF5E97B2FF /* Pods-TradeMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TradeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trademe.TradeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TradeMe/Extensions/TradeMe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -700,10 +720,12 @@
 			baseConfigurationReference = 50927F48C86002D97578D212 /* Pods-TradeMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TradeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trademe.TradeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TradeMe/Extensions/TradeMe-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

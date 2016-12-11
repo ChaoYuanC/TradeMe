@@ -38,34 +38,7 @@ class TMListingDetailService: NSObject {
             return nil
         }
         
-        // TODO: Cell data factory
-        print(dic)
-        // poster
-        
-//        TMListingDetailSection(sectionTitle: <#T##String#>, cells: <#T##[DetailCell]?#>)
-//        
-////        let listingArray = dic.arrayForKey("List")
-////        
-////        var listingObjects = [TMListingObject]()
-////        for listingDic in listingArray {
-////            if let listingDic = listingDic as? NSDictionary {
-////                listingObjects.append(TMListingObject(dic: listingDic))
-////            }
-////        }
-////        
-////        return listingObjects
-//        return nil
-//    }
-//    
-//    
-//    fileprivate func posterCell(dic: NSDictionary?) -> [DetailCell]? {
-//        guard let dic = dic else {
-//            return nil
-//        }
-//        
-//        TMPosterObject(poster: <#T##String#>, title: <#T##String#>)
-//        
-//        DetailCell.PosterCell(TMPosterObject)
-        return nil
+        return TMListingDetailsFactory().listingDetail(detailDictionary: dic)
     }
+
 }

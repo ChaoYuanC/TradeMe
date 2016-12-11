@@ -19,13 +19,11 @@ class TMDescriptionObject {
     }
 }
 
-class TMPosterObject {
-    let poster: String
+struct TMPosterObject {
+    let posters: [String]?
     let title: String
-    init(poster: String, title:String) {
-        self.poster = poster
-        self.title = title
-    }
+    let listedDate: String?
+    let priceString: String
 }
 
 enum DetailCell {
