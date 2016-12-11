@@ -10,8 +10,9 @@ import UIKit
 
 class TMListingDetailsFactory {
     fileprivate enum DetailType: String {
-        case Car = "0001"
-        case Property = "0350"
+        case car = "0001"
+        case property = "0350"
+        case unknown
     }
     
 
@@ -25,10 +26,12 @@ class TMListingDetailsFactory {
         }
         
         switch detailType {
-        case .Car:
+        case .car:
             return self.carDetails(detailDictionary)
-        case .Property:
+        case .property:
             return self.propertyDetails(detailDictionary)
+        case .unknown:
+            return [self.detailSection(detailDictionary)]
         }
     }
     
@@ -42,30 +45,30 @@ class TMListingDetailsFactory {
         }
     
         let category = dividedCategory[0]
-        if category == DetailType.Car.rawValue {
-            return .Car
-        } else if category == DetailType.Property.rawValue {
-            return .Property
+        if category == DetailType.car.rawValue {
+            return .car
+        } else if category == DetailType.property.rawValue {
+            return .property
+        } else {
+            return .unknown
         }
-        
-        return nil
     }
     
     // MARK: - Car
     fileprivate func carDetails(_ detailDictionary: NSDictionary) -> [TMListingDetailSection] {
-
-        let detailSectoin = TMListingDetailSection(sectionTitle: "Detail", cells: self.itmeAttributes(detailDictionary))
-        
-        return [detailSectoin]
+        return [self.detailSection(detailDictionary)]
     }
     
     fileprivate func propertyDetails(_ detailDictionary: NSDictionary) -> [TMListingDetailSection] {
-        let detailSectoin = TMListingDetailSection(sectionTitle: "Detail", cells: self.itmeAttributes(detailDictionary))
         let agencySection = TMListingDetailSection(sectionTitle: "Agency", cells: self.itemAgency(detailDictionary))
         
-        return [detailSectoin, agencySection]
+        return [self.detailSection(detailDictionary), agencySection]
     }
     
+    fileprivate func detailSection(_ detailDictionary: NSDictionary) -> TMListingDetailSection {
+        return TMListingDetailSection(sectionTitle: "Detail", cells: self.itmeAttributes(detailDictionary))
+
+    }
     
     // MARK: - Cell
     
