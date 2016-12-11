@@ -31,8 +31,12 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.registerCells()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.navigationItem.hidesBackButton = true
+        }
         
+        self.registerCells()
+
         self.reloadListingDetailData()
     }
 
@@ -51,6 +55,8 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
                 
                 if let headerData = headerData {
                     self.tableView.tableHeaderView = self.headerViewWithObject(headerData)
+                } else {
+                    self.tableView.tableHeaderView = nil
                 }
                 self.detailsSections = sections
                 self.tableView.reloadData()

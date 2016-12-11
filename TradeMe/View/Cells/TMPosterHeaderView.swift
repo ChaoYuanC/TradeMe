@@ -38,9 +38,11 @@ class TMPosterHeaderView: UIView, UICollectionViewDelegate, UICollectionViewData
         self.listedDate = object.listedDate
         self.price = object.priceString
         
+        
         self.titleLabel?.text = object.title
         self.listedDateLabel?.text = object.listedDate
         self.priceLabel?.text = object.priceString
+        self.postersCollectionView?.reloadData()
     }
     
     func headerHeight() -> CGFloat {

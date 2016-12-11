@@ -8,7 +8,7 @@
 
 import UIKit
 import SideMenu
-class TMiPadMainViewController: UIViewController, TMCategoryViewControllerDelegate {
+class TMiPadMainViewController: UIViewController, TMCategoryViewControllerDelegate, TMListingViewControllerDelegate {
 
     var categoryNavigationController: UINavigationController!
     var listingNavigationController: UINavigationController!
@@ -19,11 +19,13 @@ class TMiPadMainViewController: UIViewController, TMCategoryViewControllerDelega
         categoryNavigationController = self.childViewControllers[0] as! UINavigationController
         listingNavigationController = self.childViewControllers[1] as! UINavigationController
         
-        
         if let categoryController = categoryNavigationController.viewControllers[0] as? TMCategoryViewController {
             categoryController.delegate = self
         }
         
+        if let listingController = listingNavigationController.viewControllers[0] as? TMListingViewController {
+            listingController.delegate = self
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,5 +102,22 @@ class TMiPadMainViewController: UIViewController, TMCategoryViewControllerDelega
         self.showListingItems(category: category, keyword: keyword)
     }
 
+    func listingViewControllerDidSelect(controller: TMListingViewController, listingId: Int?) {
+        if let detailViewController = self.listingNavigationController.topViewController as? TMListingDetailViewController {
+            detailViewController.listingId = listingId
+            detailViewController.reloadListingDetailData()
+        } else {
+            let listingVC = UIStoryboard(name: "Listing", bundle: nil).instantiateViewController(withIdentifier: "TMListingViewController")
+            if let listingVC = listingVC as? TMListingViewController {
+                listingVC.categoryNumber = controller.categoryNumber
+                listingVC.delegate = self
+            }
+            self.categoryNavigationController.pushViewController(listingVC, animated: true)
+            
+            controller.performSegue(withIdentifier: "TMListingDetailViewController", sender: listingId)
+        }
+        
 
+
+    }
 }

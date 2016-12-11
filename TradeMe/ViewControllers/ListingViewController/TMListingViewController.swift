@@ -9,10 +9,17 @@
 import UIKit
 import SideMenu
 
+
+protocol TMListingViewControllerDelegate : class {
+    func listingViewControllerDidSelect(controller: TMListingViewController, listingId: Int?)
+}
+
 class TMListingViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     var categoryNumber: String?
     var keyword: String?
+    
+    weak var delegate: TMListingViewControllerDelegate?
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var loadingView: UIView!
@@ -75,6 +82,7 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        self.listingCell.frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0)
         let cell = self.listingCell
         self.setupCell(cell: cell, indexPath: indexPath)
         return cell.cellHeight()
@@ -88,7 +96,12 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let listingObject = self.listingObjects?[indexPath.row]
-        self.performSegue(withIdentifier: "TMListingDetailViewController", sender: listingObject?.listingId)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.delegate?.listingViewControllerDidSelect(controller: self, listingId: listingObject?.listingId)
+        } else {
+            self.performSegue(withIdentifier: "TMListingDetailViewController", sender: listingObject?.listingId)
+        }
+
     }
     
     fileprivate func setupCell(cell: TMListingTableViewCell, indexPath: IndexPath) {
