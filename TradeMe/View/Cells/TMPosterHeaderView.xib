@@ -15,6 +15,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gh-PM-jvB">
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="NWz-PP-uhQ">
+                            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="180" id="hZo-uX-BRP"/>
                             </constraints>
@@ -72,6 +73,7 @@
             <connections>
                 <outlet property="heightView" destination="9gh-PM-jvB" id="dsV-8L-kBy"/>
                 <outlet property="listedDateLabel" destination="rya-oy-B1A" id="TPD-LG-b0J"/>
+                <outlet property="posterHeightConstraint" destination="hZo-uX-BRP" id="hnd-sG-2Ma"/>
                 <outlet property="postersCollectionView" destination="NWz-PP-uhQ" id="ZON-wA-qz1"/>
                 <outlet property="priceLabel" destination="Lkt-6n-Ogl" id="VkH-Z6-oxZ"/>
                 <outlet property="titleLabel" destination="PVW-E8-Dk4" id="7jc-IM-st0"/>

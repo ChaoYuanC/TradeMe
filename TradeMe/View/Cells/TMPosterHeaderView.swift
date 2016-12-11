@@ -15,6 +15,7 @@ class TMPosterHeaderView: UIView, UICollectionViewDelegate, UICollectionViewData
     @IBOutlet var listedDateLabel: UILabel?
     @IBOutlet var priceLabel: UILabel?
     @IBOutlet var heightView: UIView?
+    @IBOutlet var posterHeightConstraint: NSLayoutConstraint?
     
     fileprivate var postersUrls: [String]?
     fileprivate var title: String?
@@ -42,6 +43,11 @@ class TMPosterHeaderView: UIView, UICollectionViewDelegate, UICollectionViewData
         self.titleLabel?.text = object.title
         self.listedDateLabel?.text = object.listedDate
         self.priceLabel?.text = object.priceString
+        if object.posters?.count ?? 0 == 0 {
+            posterHeightConstraint?.constant = 0
+        } else {
+            posterHeightConstraint?.constant = 180
+        }
         self.postersCollectionView?.reloadData()
     }
     
