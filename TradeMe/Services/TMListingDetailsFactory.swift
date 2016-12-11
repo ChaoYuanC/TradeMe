@@ -22,7 +22,7 @@ class TMListingDetailsFactory {
         
         switch detailType {
         case .Car:
-            break
+            return self.carDetails(detailDictionary)
         case .Property:
             break
         }
@@ -61,15 +61,17 @@ class TMListingDetailsFactory {
     
     fileprivate func posterCell(_ detailDictionary: NSDictionary) -> DetailCell {
         var photos = [String]()
-        for photoUrl in detailDictionary.arrayForKey("Photos") {
-            if let photoUrl = photoUrl as? String {
-                photos.append(photoUrl)
+        for photoDic in detailDictionary.arrayForKey("Photos") {
+            if let photoDic = photoDic as? NSDictionary {
+                let url = photoDic.dictionaryForKey("Value").stringForKey("Gallery")
+                photos.append(url)
             }
         }
+        
         let title = detailDictionary.stringForKey("Title")
 
         var listedDateString = ""
-        if let listedDate = NSDate.dateFromMicrosoftJsonString(jsonString: detailDictionary.stringForKey("date")) {
+        if let listedDate = NSDate.dateFromMicrosoftJsonString(jsonString: detailDictionary.stringForKey("StartDate")) {
             if NSCalendar.current.isDateInToday(listedDate as Date){
                 listedDateString = "Today"
             } else {
@@ -77,7 +79,7 @@ class TMListingDetailsFactory {
             }
         }
 
-        let priceString = detailDictionary.stringForKey("Price")
+        let priceString = detailDictionary.stringForKey("PriceDisplay")
         return DetailCell.PosterCell(TMPosterObject(posters: photos, title: title, listedDate: listedDateString, priceString: priceString))
     }
     

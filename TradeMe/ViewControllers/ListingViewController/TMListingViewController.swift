@@ -40,7 +40,7 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
         self.activityIndicatorView.startAnimating()
         self.listingService.getListingWith(categoryNumber: categoryNumber) { (listingObjects, success) in
             self.loadingView.isHidden = true
-            self.activityIndicatorView.startAnimating()
+            self.activityIndicatorView.stopAnimating()
             if success {
                 self.listingObjects = listingObjects
                 self.tableView.reloadData()

@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vTm-Zr-Waf">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vTm-Zr-Waf">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +19,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Osa-f6-VRC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vTm-Zr-Waf" id="ynV-Gr-eqE"/>
@@ -30,10 +26,8 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lk-Xz-XgP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VDD-c1-tcN">
-                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
                                         <color key="color" red="0.57647058819999997" green="0.70588235290000001" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -78,8 +72,44 @@
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gwx-Qa-mL0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cvg-hc-MUW">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="s0p-hA-L6A" id="tUO-ri-r5M"/>
+                                    <outlet property="delegate" destination="s0p-hA-L6A" id="34G-ct-4G6"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOw-TO-B7L">
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9E8-4B-utC">
+                                        <color key="color" red="0.57647058819999997" green="0.70588235290000001" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="9E8-4B-utC" firstAttribute="centerY" secondItem="pOw-TO-B7L" secondAttribute="centerY" id="9Ge-cO-NAE"/>
+                                    <constraint firstItem="9E8-4B-utC" firstAttribute="centerX" secondItem="pOw-TO-B7L" secondAttribute="centerX" id="Msa-rL-7o6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pOw-TO-B7L" firstAttribute="leading" secondItem="gwx-Qa-mL0" secondAttribute="leading" id="4Hx-xh-VCs"/>
+                            <constraint firstItem="Cvg-hc-MUW" firstAttribute="top" secondItem="gwx-Qa-mL0" secondAttribute="top" id="7pb-of-bT0"/>
+                            <constraint firstItem="Fzx-EC-urL" firstAttribute="top" secondItem="pOw-TO-B7L" secondAttribute="bottom" id="ImB-3L-mVg"/>
+                            <constraint firstAttribute="trailing" secondItem="Cvg-hc-MUW" secondAttribute="trailing" id="KQW-40-rDg"/>
+                            <constraint firstAttribute="trailing" secondItem="pOw-TO-B7L" secondAttribute="trailing" id="Lx3-Sw-I60"/>
+                            <constraint firstItem="pOw-TO-B7L" firstAttribute="top" secondItem="gwx-Qa-mL0" secondAttribute="top" id="Rl6-gt-3jQ"/>
+                            <constraint firstItem="Cvg-hc-MUW" firstAttribute="leading" secondItem="gwx-Qa-mL0" secondAttribute="leading" id="g5m-A3-Jfj"/>
+                            <constraint firstItem="Fzx-EC-urL" firstAttribute="top" secondItem="Cvg-hc-MUW" secondAttribute="bottom" id="t7p-gJ-lEQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="9E8-4B-utC" id="fi3-vt-dgX"/>
+                        <outlet property="loadingView" destination="pOw-TO-B7L" id="WyA-tq-fbp"/>
+                        <outlet property="tableView" destination="Cvg-hc-MUW" id="OnY-O7-puz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iW-iJ-dc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

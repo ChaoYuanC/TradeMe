@@ -40,3 +40,10 @@ extension UITableView {
     }
 }
 
+extension UICollectionView {
+    func registerNibForCellReuseIdentifier(_ identifier: String) {
+        let nib = UINib(nibName: identifier, bundle: nil)
+        self.register(nib, forCellWithReuseIdentifier: identifier)
+    }
+}
+
