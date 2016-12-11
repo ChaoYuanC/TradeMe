@@ -8,7 +8,7 @@
 
 import UIKit
 import SideMenu
-
+import MJRefresh
 
 protocol TMListingViewControllerDelegate : class {
     func listingViewControllerDidSelect(controller: TMListingViewController, listingId: Int?)
@@ -26,7 +26,8 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     
     fileprivate let listingService = TMListingService()
-    fileprivate var listingObjects: [TMListingObject]?
+    fileprivate var listingObjects = [TMListingObject]()
+    fileprivate var currentPage = 1
     
     private let listingCellIdentifier = "TMListingTableViewCell"
     private lazy var listingCell: TMListingTableViewCell = {
@@ -37,24 +38,16 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
         super.viewDidLoad()
         
         self.tableView.registerNibForCellReuseIdentifier(self.listingCellIdentifier)
+        self.loadingView.isHidden = false
+        self.activityIndicatorView.startAnimating()
 
         reloadListingData()
     }
 
     func reloadListingData() {
-        
-        self.loadingView.isHidden = false
-        self.activityIndicatorView.startAnimating()
-        self.listingService.getListingWith(categoryNumber: categoryNumber, searchString: keyword) { (listingObjects, success) in
-            self.loadingView.isHidden = true
-            self.activityIndicatorView.stopAnimating()
-            if success {
-                self.listingObjects = listingObjects
-                self.tableView.reloadData()
-            } else {
-                //show alert
-            }
-        }
+        self.currentPage = 1
+        self.listingObjects = [TMListingObject]()
+        self.loadListingData(self.currentPage)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,7 +71,7 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listingObjects?.count ?? 0
+        return self.listingObjects.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -95,22 +88,52 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let listingObject = self.listingObjects?[indexPath.row]
+        let listingObject = self.listingObjects[indexPath.row]
         if UIDevice.current.userInterfaceIdiom == .pad {
-            self.delegate?.listingViewControllerDidSelect(controller: self, listingId: listingObject?.listingId)
+            self.delegate?.listingViewControllerDidSelect(controller: self, listingId: listingObject.listingId)
         } else {
-            self.performSegue(withIdentifier: "TMListingDetailViewController", sender: listingObject?.listingId)
+            self.performSegue(withIdentifier: "TMListingDetailViewController", sender: listingObject.listingId)
         }
 
     }
     
     fileprivate func setupCell(cell: TMListingTableViewCell, indexPath: IndexPath) {
-        if let listingObject = self.listingObjects?[indexPath.row] {
-            cell.setupWith(listingObject: listingObject)
+        cell.setupWith(listingObject: self.listingObjects[indexPath.row] )
+    }
+    
+    @objc fileprivate func loadNext() {
+        self.currentPage += 1
+        self.loadListingData(self.currentPage)
+    }
+    
+    fileprivate func loadListingData(_ page: Int) {
+        self.listingService.getListingWith(categoryNumber: categoryNumber, searchString: keyword, page: page) { (totalCount, listingObjects, success) in
+            self.loadingView.isHidden = true
+            self.activityIndicatorView.stopAnimating()
+            if success {
+                if let listingObjects = listingObjects {
+                    self.listingObjects += listingObjects
+                    self.setFooterLoaderView(totalCount, self.listingObjects.count)
+                    self.tableView.reloadData()
+                }
+            } else {
+                //show alert
+            }
         }
     }
     
+    fileprivate func hasMoreData(_ totalCount: Int, _ objectsCount: Int) -> Bool {
+        return totalCount > objectsCount
+    }
     
+    fileprivate func setFooterLoaderView(_ totalCount: Int, _ objectsCount: Int) {
+        let hasMoreData = totalCount > objectsCount
+        if hasMoreData {
+            self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(TMListingViewController.loadNext))
+        } else {
+            self.tableView.mj_footer = nil
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let listingId = sender as? Int {            

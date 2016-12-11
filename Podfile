@@ -9,4 +9,5 @@ target 'TradeMe' do
   pod 'SideMenu', '~> 2.0'
   pod 'Alamofire', '~> 4.2.0'
   pod 'SDWebImage', '~>3.8'
+  pod 'MJRefresh'
 end

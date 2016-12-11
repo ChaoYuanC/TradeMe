@@ -11,10 +11,10 @@ import Alamofire
 
 class TMListingService: NSObject {
     // TODO: Pages
-    func getListingWith(categoryNumber: String?, searchString: String?, completion: @escaping (_ response: [TMListingObject]?, _ success: Bool) -> Void) {
+    func getListingWith(categoryNumber: String?, searchString: String?, page: Int = 1, completion: @escaping (_ totalCount: Int, _ response: [TMListingObject]?, _ success: Bool) -> Void) {
         
         var requestURL = "https://api.tmsandbox.co.nz/v1/Search/General.json"
-        var urlParameters = ""
+        var urlParameters = "page=\(page)"
         
         if let categoryNumber = categoryNumber {
             urlParameters = "category=\(categoryNumber)"
@@ -24,12 +24,9 @@ class TMListingService: NSObject {
                 urlParameters += "&"
             }
             urlParameters += "search_string=\(searchString)"
-
         }
         
-        if !urlParameters.isEmpty {
-            requestURL = requestURL + "?" + urlParameters
-        }
+        requestURL = requestURL + "?" + urlParameters
         
         let headers: [String: String] = [
             "Authorization": "OAuth oauth_consumer_key=A1AC63F0332A131A78FAC304D007E7D1, oauth_token=F79AD745526E29976A294F12779463D1, oauth_signature_method=PLAINTEXT, oauth_signature=EC7F18B17A062962C6930A8AE88B16C7&ADB48D4AD130C6FC68BC99259C035943",
@@ -37,10 +34,14 @@ class TMListingService: NSObject {
         Alamofire.request(requestURL, method: .get, headers: headers).responseJSON(completionHandler: { (response) in
             switch response.result {
             case let .success(value):
-                completion(self.listingWith(dic: value as? NSDictionary), true)
+                if let dic = value as? NSDictionary {
+                    completion(self.totalCount(dic: dic), self.listingWith(dic: dic), true)
+                } else {
+                    completion(0, nil, false)
+                }
                 break
             case .failure(_):
-                completion(nil, false)
+                completion(0, nil, false)
             }
         })
         
@@ -65,5 +66,13 @@ class TMListingService: NSObject {
         }
         
         return listingObjects
+    }
+    
+    fileprivate func totalCount(dic: NSDictionary?) -> Int {
+        guard let dic = dic else {
+            return 0
+        }
+        
+        return dic.intForKey("TotalCount")
     }
 }

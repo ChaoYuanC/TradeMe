@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6C90ECFCAFB5A9AE7D36FE4DF877EA03'
-               BlueprintName = 'SideMenu'
+               BlueprintIdentifier = 'E14A62900910444707A5504D25EC98DC'
+               BlueprintName = 'MJRefresh'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SideMenu.framework'>
+               BuildableName = 'MJRefresh.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
