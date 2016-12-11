@@ -70,7 +70,7 @@ class TMListingDetailsFactory {
 
         var listedDateString = ""
         if let listedDate = NSDate.dateFromMicrosoftJsonString(jsonString: detailDictionary.stringForKey("date")) {
-            if listedDate.isToday() {
+            if NSCalendar.current.isDateInToday(listedDate as Date){
                 listedDateString = "Today"
             } else {
                 listedDateString = listedDate.fullDateString()

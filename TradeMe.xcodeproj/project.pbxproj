@@ -16,7 +16,6 @@
 		2410B8A81DF8C49C00784C60 /* TradeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410B8A71DF8C49C00784C60 /* TradeMeUITests.swift */; };
 		2423022A1DFCBA230003E606 /* TMListingDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */; };
 		2423022C1DFCC9010003E606 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423022B1DFCC9010003E606 /* NSDateExtension.swift */; };
-		242302301DFCCDB10003E606 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2423022F1DFCCDB10003E606 /* NSDate+Utilities.m */; };
 		242EEF301DF9599D001AF115 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 242EEF2E1DF9599D001AF115 /* Main_iPad.storyboard */; };
 		242EEF331DF95D2D001AF115 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 242EEF321DF95D2D001AF115 /* Category.storyboard */; };
 		242EEF381DF95F8A001AF115 /* TMListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EEF371DF95F8A001AF115 /* TMListingViewController.swift */; };
@@ -80,8 +79,6 @@
 		242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingDetailsFactory.swift; sourceTree = "<group>"; };
 		2423022B1DFCC9010003E606 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		2423022D1DFCCDB00003E606 /* TradeMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TradeMe-Bridging-Header.h"; sourceTree = "<group>"; };
-		2423022E1DFCCDB10003E606 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
-		2423022F1DFCCDB10003E606 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		242EEF2F1DF9599D001AF115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		242EEF321DF95D2D001AF115 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Category.storyboard; path = ../../Category.storyboard; sourceTree = "<group>"; };
 		242EEF371DF95F8A001AF115 /* TMListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingViewController.swift; sourceTree = "<group>"; };
@@ -305,8 +302,6 @@
 		2497BA2C1DF9446C00D8523C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2423022E1DFCCDB10003E606 /* NSDate+Utilities.h */,
-				2423022F1DFCCDB10003E606 /* NSDate+Utilities.m */,
 				2483B7261DF9831B00DC5471 /* NSDictionaryExtension.swift */,
 				2483B7301DF9B51700DC5471 /* UITableViewExtension.swift */,
 				2423022B1DFCC9010003E606 /* NSDateExtension.swift */,
@@ -536,7 +531,6 @@
 				2483B7491DF9F6C500DC5471 /* TMListingDetailObject.swift in Sources */,
 				2483B7231DF973CB00DC5471 /* APINetwork.swift in Sources */,
 				415073BA1DFA1FF60079DF45 /* TMiPadMainViewController.swift in Sources */,
-				242302301DFCCDB10003E606 /* NSDate+Utilities.m in Sources */,
 				2483B74B1DF9FA9400DC5471 /* TMListingDetailService.swift in Sources */,
 				2483B7371DF9C33500DC5471 /* TMListingService.swift in Sources */,
 				2483B72F1DF9B25700DC5471 /* TMBaseTableViewCell.swift in Sources */,
