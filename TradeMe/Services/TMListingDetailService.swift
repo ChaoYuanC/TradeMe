@@ -11,7 +11,7 @@ import Alamofire
 
 class TMListingDetailService: NSObject {
     // TODO: Pages
-    func getListingDetailWith(listingId: String, completion: @escaping (_ response: [TMListingDetailSection]?, _ success: Bool) -> Void) {
+    func getListingDetailWith(listingId: String, completion: @escaping (_ posterObject: TMPosterObject?, _ sections: [TMListingDetailSection]?, _ success: Bool) -> Void) {
         
         let requestURL = "https://api.tmsandbox.co.nz/v1/Listings/\(listingId).json"
         
@@ -21,24 +21,19 @@ class TMListingDetailService: NSObject {
         Alamofire.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in
             switch response.result {
             case let .success(value):
-                completion(self.listingObjectWith(dic: value as? NSDictionary), true)
+                if let dic = value as? NSDictionary {
+                    let factory = TMListingDetailsFactory()
+                    completion(factory.posterHeader(detailDictionary: dic), factory.listingDetail(detailDictionary: dic), true)
+                } else {
+                    completion(nil, nil, false)
+                }
                 break
             case .failure(_):
-                completion(nil, false)
+                completion(nil, nil, false)
             }
         })
     }
     
-    
-    // MARK: - Parse
-    
-    
-    fileprivate func listingObjectWith(dic: NSDictionary?) -> [TMListingDetailSection]? {
-        guard let dic = dic else {
-            return nil
-        }
-        
-        return TMListingDetailsFactory().listingDetail(detailDictionary: dic)
-    }
+
 
 }

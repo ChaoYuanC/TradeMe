@@ -15,6 +15,10 @@ class TMListingDetailsFactory {
     }
     
 
+    func posterHeader(detailDictionary: NSDictionary) -> TMPosterObject {
+        return self.posterObject(detailDictionary)
+    }
+    
     func listingDetail(detailDictionary: NSDictionary) -> [TMListingDetailSection]? {
         guard let detailType =  self.detailType(detailDictionary) else {
             return nil
@@ -51,15 +55,17 @@ class TMListingDetailsFactory {
     
     // MARK: - Car
     fileprivate func carDetails(_ detailDictionary: NSDictionary) ->  [TMListingDetailSection] {
-        let posterSection = TMListingDetailSection(sectionTitle: "", cells: [self.posterCell(detailDictionary)])
-        return [posterSection]
+
+        let detailSectoin = TMListingDetailSection(sectionTitle: "Detail", cells: self.itmeAttributes(detailDictionary))
+        
+        return [detailSectoin]
     }
     
     
     // MARK: - Cell
     
     
-    fileprivate func posterCell(_ detailDictionary: NSDictionary) -> DetailCell {
+    fileprivate func posterObject(_ detailDictionary: NSDictionary) -> TMPosterObject {
         var photos = [String]()
         for photoDic in detailDictionary.arrayForKey("Photos") {
             if let photoDic = photoDic as? NSDictionary {
@@ -80,9 +86,22 @@ class TMListingDetailsFactory {
         }
 
         let priceString = detailDictionary.stringForKey("PriceDisplay")
-        return DetailCell.PosterCell(TMPosterObject(posters: photos, title: title, listedDate: listedDateString, priceString: priceString))
+        return TMPosterObject(posters: photos, title: title, listedDate: listedDateString, priceString: priceString)
     }
     
-    
+    fileprivate func itmeAttributes(_ detailDictionary: NSDictionary) -> [DetailCell] {
+        let attributesArray = detailDictionary.arrayForKey("Attributes")
+        
+        var attributeCells = [DetailCell]()
+        for attribute in attributesArray {
+            if let attributeDic = attribute as? NSDictionary {
+                let attributeName = attributeDic.stringForKey("DisplayName")
+                let attributeValue = attributeDic.stringForKey("Value")
+                let cell = DetailCell.DescriptionCell(TMAttributeObject(title: attributeName, value: attributeValue))
+                attributeCells.append(cell)
+            }
+        }
+        return attributeCells
+    }
     
 }

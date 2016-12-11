@@ -9,14 +9,9 @@
 import UIKit
 
 
-class TMDescriptionObject {
+struct TMAttributeObject {
     let title: String
-    let detail: String
-    
-    init(title: String, detail:String) {
-        self.title = title
-        self.detail = detail
-    }
+    let value: String
 }
 
 struct TMPosterObject {
@@ -27,12 +22,11 @@ struct TMPosterObject {
 }
 
 enum DetailCell {
-    case PosterCell(TMPosterObject)
-    case DescriptionCell(TMDescriptionObject)
+    case DescriptionCell(TMAttributeObject)
 }
 
 class TMListingDetailSection {
-    let sectionTitle: String
+    let sectionTitle: String?
     let cells: [DetailCell]?
     init(sectionTitle: String, cells: [DetailCell]?) {
         self.sectionTitle = sectionTitle

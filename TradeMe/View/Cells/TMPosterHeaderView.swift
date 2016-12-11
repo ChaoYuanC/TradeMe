@@ -8,12 +8,13 @@
 
 import UIKit
 
-class TMPosterTableViewCell: BaseTableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class TMPosterHeaderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var postersCollectionView: UICollectionView?
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet var listedDateLabel: UILabel?
     @IBOutlet var priceLabel: UILabel?
+    @IBOutlet var heightView: UIView?
     
     fileprivate var postersUrls: [String]?
     fileprivate var title: String?
@@ -30,12 +31,6 @@ class TMPosterTableViewCell: BaseTableViewCell, UICollectionViewDelegate, UIColl
         self.postersCollectionView?.registerNibForCellReuseIdentifier(self.posterCellIdentifier)
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func setupWith(object: TMPosterObject) {
         self.postersUrls = object.posters
@@ -46,6 +41,11 @@ class TMPosterTableViewCell: BaseTableViewCell, UICollectionViewDelegate, UIColl
         self.titleLabel?.text = object.title
         self.listedDateLabel?.text = object.listedDate
         self.priceLabel?.text = object.priceString
+    }
+    
+    func headerHeight() -> CGFloat {
+        self.layoutIfNeeded()
+        return self.heightView?.bounds.size.height ?? 0
     }
     
     

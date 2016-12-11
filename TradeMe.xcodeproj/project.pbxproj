@@ -16,8 +16,8 @@
 		2410B8A81DF8C49C00784C60 /* TradeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410B8A71DF8C49C00784C60 /* TradeMeUITests.swift */; };
 		2423022A1DFCBA230003E606 /* TMListingDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */; };
 		2423022C1DFCC9010003E606 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423022B1DFCC9010003E606 /* NSDateExtension.swift */; };
-		242302331DFCE1350003E606 /* TMPosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242302311DFCE1350003E606 /* TMPosterTableViewCell.swift */; };
-		242302341DFCE1350003E606 /* TMPosterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 242302321DFCE1350003E606 /* TMPosterTableViewCell.xib */; };
+		242302331DFCE1350003E606 /* TMPosterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242302311DFCE1350003E606 /* TMPosterHeaderView.swift */; };
+		242302341DFCE1350003E606 /* TMPosterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 242302321DFCE1350003E606 /* TMPosterHeaderView.xib */; };
 		242302371DFCEF9A0003E606 /* TMPosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242302351DFCEF9A0003E606 /* TMPosterCollectionViewCell.swift */; };
 		242302381DFCEF9A0003E606 /* TMPosterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 242302361DFCEF9A0003E606 /* TMPosterCollectionViewCell.xib */; };
 		242EEF301DF9599D001AF115 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 242EEF2E1DF9599D001AF115 /* Main_iPad.storyboard */; };
@@ -46,6 +46,8 @@
 		2483B7471DF9F13A00DC5471 /* TMListingDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2483B7451DF9F13A00DC5471 /* TMListingDetailInfoTableViewCell.xib */; };
 		2483B7491DF9F6C500DC5471 /* TMListingDetailObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2483B7481DF9F6C500DC5471 /* TMListingDetailObject.swift */; };
 		2483B74B1DF9FA9400DC5471 /* TMListingDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2483B74A1DF9FA9400DC5471 /* TMListingDetailService.swift */; };
+		24C359CB1DFD204500E08881 /* TMAttributeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C359C91DFD204500E08881 /* TMAttributeTableViewCell.swift */; };
+		24C359CC1DFD204500E08881 /* TMAttributeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C359CA1DFD204500E08881 /* TMAttributeTableViewCell.xib */; };
 		415073BA1DFA1FF60079DF45 /* TMiPadMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415073B91DFA1FF60079DF45 /* TMiPadMainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,8 +85,8 @@
 		242302291DFCBA230003E606 /* TMListingDetailsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingDetailsFactory.swift; sourceTree = "<group>"; };
 		2423022B1DFCC9010003E606 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		2423022D1DFCCDB00003E606 /* TradeMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TradeMe-Bridging-Header.h"; sourceTree = "<group>"; };
-		242302311DFCE1350003E606 /* TMPosterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPosterTableViewCell.swift; sourceTree = "<group>"; };
-		242302321DFCE1350003E606 /* TMPosterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMPosterTableViewCell.xib; sourceTree = "<group>"; };
+		242302311DFCE1350003E606 /* TMPosterHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPosterHeaderView.swift; sourceTree = "<group>"; };
+		242302321DFCE1350003E606 /* TMPosterHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMPosterHeaderView.xib; sourceTree = "<group>"; };
 		242302351DFCEF9A0003E606 /* TMPosterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TMPosterCollectionViewCell.swift; path = ../../Objects/TMPosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		242302361DFCEF9A0003E606 /* TMPosterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TMPosterCollectionViewCell.xib; path = ../../Objects/TMPosterCollectionViewCell.xib; sourceTree = "<group>"; };
 		242EEF2F1DF9599D001AF115 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
@@ -113,6 +115,8 @@
 		2483B7451DF9F13A00DC5471 /* TMListingDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMListingDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
 		2483B7481DF9F6C500DC5471 /* TMListingDetailObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingDetailObject.swift; sourceTree = "<group>"; };
 		2483B74A1DF9FA9400DC5471 /* TMListingDetailService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMListingDetailService.swift; sourceTree = "<group>"; };
+		24C359C91DFD204500E08881 /* TMAttributeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAttributeTableViewCell.swift; sourceTree = "<group>"; };
+		24C359CA1DFD204500E08881 /* TMAttributeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMAttributeTableViewCell.xib; sourceTree = "<group>"; };
 		415073B91DFA1FF60079DF45 /* TMiPadMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMiPadMainViewController.swift; sourceTree = "<group>"; };
 		50927F48C86002D97578D212 /* Pods-TradeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TradeMe/Pods-TradeMe.release.xcconfig"; sourceTree = "<group>"; };
 		8F0100547B5D1714DFBD4A39 /* Pods_TradeMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,10 +276,12 @@
 				2483B7411DF9EE9F00DC5471 /* TMListingDetailPosterTableViewCell.xib */,
 				2483B7441DF9F13A00DC5471 /* TMListingDetailInfoTableViewCell.swift */,
 				2483B7451DF9F13A00DC5471 /* TMListingDetailInfoTableViewCell.xib */,
-				242302311DFCE1350003E606 /* TMPosterTableViewCell.swift */,
-				242302321DFCE1350003E606 /* TMPosterTableViewCell.xib */,
+				242302311DFCE1350003E606 /* TMPosterHeaderView.swift */,
+				242302321DFCE1350003E606 /* TMPosterHeaderView.xib */,
 				242302351DFCEF9A0003E606 /* TMPosterCollectionViewCell.swift */,
 				242302361DFCEF9A0003E606 /* TMPosterCollectionViewCell.xib */,
+				24C359C91DFD204500E08881 /* TMAttributeTableViewCell.swift */,
+				24C359CA1DFD204500E08881 /* TMAttributeTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -444,8 +450,9 @@
 			files = (
 				2483B7431DF9EE9F00DC5471 /* TMListingDetailPosterTableViewCell.xib in Resources */,
 				242EEF331DF95D2D001AF115 /* Category.storyboard in Resources */,
+				24C359CC1DFD204500E08881 /* TMAttributeTableViewCell.xib in Resources */,
 				2410B8921DF8C49C00784C60 /* LaunchScreen.storyboard in Resources */,
-				242302341DFCE1350003E606 /* TMPosterTableViewCell.xib in Resources */,
+				242302341DFCE1350003E606 /* TMPosterHeaderView.xib in Resources */,
 				2483B7391DF9C7E200DC5471 /* Listing.storyboard in Resources */,
 				2483B72D1DF9923700DC5471 /* TMCategoryTableViewCell.xib in Resources */,
 				242EEF301DF9599D001AF115 /* Main_iPad.storyboard in Resources */,
@@ -533,7 +540,7 @@
 				2423022C1DFCC9010003E606 /* NSDateExtension.swift in Sources */,
 				2483B7311DF9B51700DC5471 /* UITableViewExtension.swift in Sources */,
 				2483B73B1DF9D6A300DC5471 /* TMListingObject.swift in Sources */,
-				242302331DFCE1350003E606 /* TMPosterTableViewCell.swift in Sources */,
+				242302331DFCE1350003E606 /* TMPosterHeaderView.swift in Sources */,
 				247BA54A1DF92DD10058624C /* SearchViewController.swift in Sources */,
 				242302371DFCEF9A0003E606 /* TMPosterCollectionViewCell.swift in Sources */,
 				245A497B1DFA093300CC65C1 /* TMListingDetailViewController.swift in Sources */,
@@ -547,6 +554,7 @@
 				2483B7491DF9F6C500DC5471 /* TMListingDetailObject.swift in Sources */,
 				2483B7231DF973CB00DC5471 /* APINetwork.swift in Sources */,
 				415073BA1DFA1FF60079DF45 /* TMiPadMainViewController.swift in Sources */,
+				24C359CB1DFD204500E08881 /* TMAttributeTableViewCell.swift in Sources */,
 				2483B74B1DF9FA9400DC5471 /* TMListingDetailService.swift in Sources */,
 				2483B7371DF9C33500DC5471 /* TMListingService.swift in Sources */,
 				2483B72F1DF9B25700DC5471 /* TMBaseTableViewCell.swift in Sources */,

@@ -19,9 +19,13 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
     fileprivate var detailsSections: [TMListingDetailSection]?
     fileprivate let listingDetailService = TMListingDetailService()
     
-    private let posterCellIdentifier = "TMPosterTableViewCell"
-    private lazy var posterCell: TMPosterTableViewCell = {
-        return Bundle.main.loadNibNamed(self.posterCellIdentifier, owner: nil, options: nil)![0] as! TMPosterTableViewCell
+    private lazy var headerView: TMPosterHeaderView = {
+        return Bundle.main.loadNibNamed("TMPosterHeaderView", owner: nil, options: nil)![0] as! TMPosterHeaderView
+    }()
+    
+    private let attributeCellIdentifier = "TMAttributeTableViewCell"
+    private lazy var attributeCell: TMAttributeTableViewCell = {
+        return Bundle.main.loadNibNamed(self.attributeCellIdentifier, owner: nil, options: nil)![0] as! TMAttributeTableViewCell
     }()
     
     override func viewDidLoad() {
@@ -39,10 +43,13 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
         
         self.loadingView.isHidden = false
         self.activityIndicatorView.startAnimating()
-        self.listingDetailService.getListingDetailWith(listingId: String(listingId), completion: { (sections, success) in
+        self.listingDetailService.getListingDetailWith(listingId: String(listingId), completion: { (headerData, sections, success) in
             self.loadingView.isHidden = true
             self.activityIndicatorView.stopAnimating()
             if success {
+                if let headerData = headerData {
+                    self.tableView.tableHeaderView = self.headerViewWithObject(headerData)
+                }
                 self.detailsSections = sections
                 self.tableView.reloadData()
             } else {
@@ -70,10 +77,9 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         switch cellData {
-        case let .PosterCell(posterObject):
-            self.setupPosterCell(self.posterCell, posterObject)
-            return self.posterCell.cellHeight()
-        default: return 0
+        case let .DescriptionCell(TMAttributeObject):
+            self.setupAttributeCell(self.attributeCell, TMAttributeObject)
+            return self.attributeCell.cellHeight()
         }
     }
     
@@ -83,30 +89,46 @@ class TMListingDetailViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         switch cellData {
-        case let .PosterCell(posterObject):
-            let cell = tableView.dequeueReusableCell(withIdentifier: self.posterCellIdentifier) as! TMPosterTableViewCell
-            self.setupPosterCell(cell, posterObject)
+        case let .DescriptionCell(TMAttributeObject):
+            let cell = tableView.dequeueReusableCell(withIdentifier: self.attributeCellIdentifier) as! TMAttributeTableViewCell
+            self.setupAttributeCell(cell, TMAttributeObject)
             return cell
-        default: return UITableViewCell()
         }
 
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.sectionTitle(section)
     }
     
     
     // MARK: - Private
     
     
+    fileprivate func headerViewWithObject(_ object: TMPosterObject) -> TMPosterHeaderView {
+        self.headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: 0)
+        self.headerView.setupWith(object: object)
+        self.headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.headerView.headerHeight())
+        return self.headerView
+    }
+    
     fileprivate func cellDataWith(_ indexPath: IndexPath) -> DetailCell? {
         return self.detailsSections?[indexPath.section].cells?[indexPath.row]
     }
     
-    fileprivate func registerCells() {
-        self.tableView.registerNibForCellReuseIdentifier(self.posterCellIdentifier)
+    fileprivate func sectionTitle(_ section: Int) -> String? {
+        return self.detailsSections?[section].sectionTitle
     }
+    
+    fileprivate func registerCells() {
+        self.tableView.registerNibForCellReuseIdentifier(self.attributeCellIdentifier)
+    }
+    
 }
 
 extension TMListingDetailViewController {
-    func setupPosterCell(_ cell: TMPosterTableViewCell, _ object: TMPosterObject) {
+    
+    func setupAttributeCell(_ cell: TMAttributeTableViewCell, _ object: TMAttributeObject) {
         cell.setupWith(object: object)
     }
 }
