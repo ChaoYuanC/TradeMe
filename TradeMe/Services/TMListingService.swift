@@ -11,17 +11,30 @@ import Alamofire
 
 class TMListingService: NSObject {
     // TODO: Pages
-    func getListingWith(categoryNumber: String?, completion: @escaping (_ response: [TMListingObject]?, _ success: Bool) -> Void) {
+    func getListingWith(categoryNumber: String?, searchString: String?, completion: @escaping (_ response: [TMListingObject]?, _ success: Bool) -> Void) {
         
         var requestURL = "https://api.tmsandbox.co.nz/v1/Search/General.json"
+        var urlParameters = ""
+        
         if let categoryNumber = categoryNumber {
-            requestURL = requestURL+"?"+"category=\(categoryNumber)"
+            urlParameters = "category=\(categoryNumber)"
+        }
+        if let searchString = searchString {
+            if !urlParameters.isEmpty {
+                urlParameters += "&"
+            }
+            urlParameters += "search_string=\(searchString)"
+
+        }
+        
+        if !urlParameters.isEmpty {
+            requestURL = requestURL + "?" + urlParameters
         }
         
         let headers: [String: String] = [
             "Authorization": "OAuth oauth_consumer_key=A1AC63F0332A131A78FAC304D007E7D1, oauth_token=F79AD745526E29976A294F12779463D1, oauth_signature_method=PLAINTEXT, oauth_signature=EC7F18B17A062962C6930A8AE88B16C7&ADB48D4AD130C6FC68BC99259C035943",
         ]
-        Alamofire.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in
+        Alamofire.request(requestURL, method: .get, headers: headers).responseJSON(completionHandler: { (response) in
             switch response.result {
             case let .success(value):
                 completion(self.listingWith(dic: value as? NSDictionary), true)

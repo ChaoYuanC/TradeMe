@@ -45,7 +45,7 @@ class TMListingViewController: UIViewController, UISearchBarDelegate, UITableVie
         
         self.loadingView.isHidden = false
         self.activityIndicatorView.startAnimating()
-        self.listingService.getListingWith(categoryNumber: categoryNumber) { (listingObjects, success) in
+        self.listingService.getListingWith(categoryNumber: categoryNumber, searchString: keyword) { (listingObjects, success) in
             self.loadingView.isHidden = true
             self.activityIndicatorView.stopAnimating()
             if success {
